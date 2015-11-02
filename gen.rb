@@ -24,6 +24,7 @@ def genImg(res)
 		["jpg", "png", "gif"].each do |fmt|
 			fn = "data/#{res}-#{color}.#{fmt}"
 			print "# generating #{fn}\n"
+			print "<a href='data/#{fn}'><h4>#{fn}</h4></a>\n"
 			`convert -size #{res} xc:#{color} #{fn}`
 		end
 	end
