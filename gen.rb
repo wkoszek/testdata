@@ -3,6 +3,10 @@
 require 'rubygems'
 require 'rmagick'
 
+if not Dir.exists?("data") then
+	Dir.mkdir("data")
+end
+
 def toFileGen(n)
 	fn = "#{n}.txt"
 	f = File.open("data/#{fn}", "w+")
@@ -20,12 +24,13 @@ toFileGen(    128) { |n, f| n.times { f.print "b" }}
 toFileGen(    256) { |n, f| n.times { f.print "b" }}
 
 def genImg(res)
+	f="-define png:exclude-chunk=time "
 	["white", "black", "red" ].each do |color|
 		["jpg", "png", "gif"].each do |fmt|
 			fn = "data/#{res}-#{color}.#{fmt}"
 			print "# generating #{fn}\n"
 			print "<a href='data/#{fn}'><h4>#{fn}</h4></a>\n"
-			`convert -size #{res} xc:#{color} #{fn}`
+			`convert #{f} -size #{res} xc:#{color} #{fn}`
 		end
 	end
 end
