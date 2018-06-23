@@ -40,7 +40,6 @@ genImg('10x10')
 genImg('100x100')
 genImg('1000x1000')
 
-
 # add alexa rank pages.
 # add data URL generator
 # add same size data/different content
